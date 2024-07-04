@@ -251,11 +251,12 @@ export default {
 		socks5DataURL = env.SOCKS5DATA || socks5DataURL;
 		if (env.CMPROXYIPS) CMproxyIPs = await ADD(env.CMPROXYIPS);;
 		//console.log(CMproxyIPs);
-		EndPS = env.PS || EndPS;
 		const userAgentHeader = request.headers.get('User-Agent');
 		const userAgent = userAgentHeader ? userAgentHeader.toLowerCase() : "null";
 		const url = new URL(request.url);
 		const format = url.searchParams.get('format') ? url.searchParams.get('format').toLowerCase() : "null";
+		const ps = url.searchParams.get('ps');
+		EndPS = ps || env.PS || EndPS;
 		let host = "";
 		let uuid = "";
 		let path = "";
